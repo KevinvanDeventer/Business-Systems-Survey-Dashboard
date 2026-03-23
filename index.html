@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Business Systems Survey — Dashboard</title>
@@ -165,10 +163,10 @@
     <p>Live dashboard — data as of March 2026 (updated)</p>
   </div>
   <div class="header-right">
-    <span class="badge badge-blue" id="resp-badge">110 responses</span>
+    <span class="badge badge-blue" id="resp-badge">105 responses</span>
     <span class="badge badge-green">11% of target</span>
     <button class="download-btn" onclick="downloadDashboard()">
-      &#8595; Download HTML
+      ↓ Download HTML
     </button>
   </div>
 </div>
@@ -178,46 +176,100 @@
   <!-- Geo filter -->
   <div class="filter-bar">
     <span class="filter-label">Filter by region:</span>
-    <button class="geo-btn active" onclick="setGeo('all',this)">All regions <span class="geo-count" id="gc-all">91</span></button>
-    <button class="geo-btn" onclick="setGeo('NZ',this)">🇳🇿 New Zealand <span class="geo-count" id="gc-nz">—</span></button>
-    <button class="geo-btn" onclick="setGeo('AU',this)">🇦🇺 Australia <span class="geo-count" id="gc-au">—</span></button>
-    <button class="geo-btn" onclick="setGeo('UK',this)">🇬🇧 United Kingdom <span class="geo-count" id="gc-uk">—</span></button>
-    <button class="geo-btn" onclick="setGeo('US',this)">🇺🇸 United States <span class="geo-count" id="gc-us">—</span></button>
-    <button class="geo-btn" onclick="setGeo('FR',this)">🇫🇷 France <span class="geo-count" id="gc-fr">—</span></button>
-    <button class="geo-btn" onclick="setGeo('OTHER',this)">🌍 Other <span class="geo-count" id="gc-other">—</span></button>
+    <button class="geo-btn active" onclick="setGeo('all',this)">All regions <span class="geo-count" id="gc-all">105</span></button>
+    <button class="geo-btn" onclick="setGeo('NZ',this)">🇳🇿 New Zealand <span class="geo-count" id="gc-nz">50</span></button>
+    <button class="geo-btn" onclick="setGeo('AU',this)">🇦🇺 Australia <span class="geo-count" id="gc-au">28</span></button>
+    <button class="geo-btn" onclick="setGeo('UK',this)">🇬🇧 United Kingdom <span class="geo-count" id="gc-uk">5</span></button>
+    <button class="geo-btn" onclick="setGeo('US',this)">🇺🇸 United States <span class="geo-count" id="gc-us">4</span></button>
+    <button class="geo-btn" onclick="setGeo('FR',this)">🇫🇷 France <span class="geo-count" id="gc-fr">11</span></button>
+    <button class="geo-btn" onclick="setGeo('OTHER',this)">🌍 Other <span class="geo-count" id="gc-other">7</span></button>
   </div>
 
   <!-- Metrics -->
   <div class="metric-grid" id="metrics-grid">
     <div class="metric-card">
       <div class="metric-label">Responses</div>
-      <div class="metric-value" id="m-total" style="color:var(--blue)">91</div>
+      <div class="metric-value" id="m-total" style="color:var(--blue)">105</div>
       <div class="metric-sub">of 1,000 target</div>
-      <div class="metric-bar"><div class="metric-bar-fill" id="m-total-bar" style="width:9.1%;background:var(--blue)"></div></div>
+      <div class="metric-bar"><div class="metric-bar-fill" id="m-total-bar" style="width: 10.5%; background: var(--blue);"></div></div>
     </div>
     <div class="metric-card">
       <div class="metric-label">Avg CRM satisfaction</div>
-      <div class="metric-value" id="m-crm" style="color:var(--blue)">—</div>
+      <div class="metric-value" id="m-crm" style="color:var(--blue)">3.6</div>
       <div class="metric-sub">out of 5</div>
-      <div class="metric-bar"><div class="metric-bar-fill" id="m-crm-bar" style="background:var(--blue)"></div></div>
+      <div class="metric-bar"><div class="metric-bar-fill" id="m-crm-bar" style="background: var(--blue); width: 72%;"></div></div>
     </div>
     <div class="metric-card">
       <div class="metric-label">Avg ERP satisfaction</div>
-      <div class="metric-value" id="m-erp" style="color:var(--green)">—</div>
+      <div class="metric-value" id="m-erp" style="color:var(--green)">3.4</div>
       <div class="metric-sub">out of 5</div>
-      <div class="metric-bar"><div class="metric-bar-fill" id="m-erp-bar" style="background:var(--green)"></div></div>
+      <div class="metric-bar"><div class="metric-bar-fill" id="m-erp-bar" style="background: var(--green); width: 68.1%;"></div></div>
     </div>
     <div class="metric-card">
       <div class="metric-label">Avg Phone satisfaction</div>
-      <div class="metric-value" id="m-phone" style="color:var(--coral)">—</div>
+      <div class="metric-value" id="m-phone" style="color:var(--coral)">3.6</div>
       <div class="metric-sub">out of 5</div>
-      <div class="metric-bar"><div class="metric-bar-fill" id="m-phone-bar" style="background:var(--coral)"></div></div>
+      <div class="metric-bar"><div class="metric-bar-fill" id="m-phone-bar" style="background: var(--coral); width: 72.9%;"></div></div>
     </div>
   </div>
 
   <!-- Geography breakdown -->
   <div class="section-header"><span class="section-title">Geographic breakdown</span><div class="section-line"></div></div>
-  <div class="geo-grid" style="margin-bottom:24px;" id="geo-breakdown"></div>
+  <div class="geo-grid" style="margin-bottom:24px;" id="geo-breakdown"><div class="geo-card " onclick="setGeoCard('NZ')">
+      <span class="geo-flag">🇳🇿</span>
+      <div class="geo-name">New Zealand</div>
+      <div class="geo-num">50</div>
+      <div class="geo-pct">48% of responses</div>
+      <div class="geo-sat-row">
+        <span class="geo-sat-pill" style="background:var(--blue-light);color:var(--blue)">CRM 3.7</span>
+        <span class="geo-sat-pill" style="background:var(--green-light);color:var(--green)">ERP 3.3</span>
+      </div>
+    </div><div class="geo-card " onclick="setGeoCard('AU')">
+      <span class="geo-flag">🇦🇺</span>
+      <div class="geo-name">Australia</div>
+      <div class="geo-num">28</div>
+      <div class="geo-pct">27% of responses</div>
+      <div class="geo-sat-row">
+        <span class="geo-sat-pill" style="background:var(--blue-light);color:var(--blue)">CRM 3.2</span>
+        <span class="geo-sat-pill" style="background:var(--green-light);color:var(--green)">ERP 3.6</span>
+      </div>
+    </div><div class="geo-card " onclick="setGeoCard('UK')">
+      <span class="geo-flag">🇬🇧</span>
+      <div class="geo-name">United Kingdom</div>
+      <div class="geo-num">5</div>
+      <div class="geo-pct">5% of responses</div>
+      <div class="geo-sat-row">
+        <span class="geo-sat-pill" style="background:var(--blue-light);color:var(--blue)">CRM 3.8</span>
+        <span class="geo-sat-pill" style="background:var(--green-light);color:var(--green)">ERP 3.2</span>
+      </div>
+    </div><div class="geo-card " onclick="setGeoCard('US')">
+      <span class="geo-flag">🇺🇸</span>
+      <div class="geo-name">United States</div>
+      <div class="geo-num">4</div>
+      <div class="geo-pct">4% of responses</div>
+      <div class="geo-sat-row">
+        <span class="geo-sat-pill" style="background:var(--blue-light);color:var(--blue)">CRM 3.0</span>
+        <span class="geo-sat-pill" style="background:var(--green-light);color:var(--green)">ERP 3.5</span>
+      </div>
+    </div><div class="geo-card " onclick="setGeoCard('FR')">
+      <span class="geo-flag">🇫🇷</span>
+      <div class="geo-name">France</div>
+      <div class="geo-num">11</div>
+      <div class="geo-pct">10% of responses</div>
+      <div class="geo-sat-row">
+        <span class="geo-sat-pill" style="background:var(--blue-light);color:var(--blue)">CRM 4.2</span>
+        <span class="geo-sat-pill" style="background:var(--green-light);color:var(--green)">ERP 3.1</span>
+      </div>
+    </div><div class="geo-card " onclick="setGeoCard('OTHER')">
+      <span class="geo-flag">🌍</span>
+      <div class="geo-name">Other</div>
+      <div class="geo-num">7</div>
+      <div class="geo-pct">7% of responses</div>
+      <div class="geo-sat-row">
+        <span class="geo-sat-pill" style="background:var(--blue-light);color:var(--blue)">CRM 3.6</span>
+        <span class="geo-sat-pill" style="background:var(--green-light);color:var(--green)">ERP 4.1</span>
+      </div>
+    </div></div>
 
   <!-- System landscape + progress -->
   <div class="section-header"><span class="section-title">System landscape</span><div class="section-line"></div></div>
@@ -228,24 +280,56 @@
         <button class="tab" onclick="showSystem('erp',this)">ERP</button>
         <button class="tab" onclick="showSystem('phone',this)">Phone</button>
       </div>
-      <div id="system-bars"></div>
+      <div id="system-bars"><div class="bar-row">
+      <div class="bar-label" title="HubSpot">HubSpot</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%;background:#185FA588;"></div></div>
+      <div class="bar-count">31</div>
+    </div><div class="bar-row">
+      <div class="bar-label" title="Other">Other</div>
+      <div class="bar-track"><div class="bar-fill" style="width:48%;background:#185FA588;"></div></div>
+      <div class="bar-count">15</div>
+    </div><div class="bar-row">
+      <div class="bar-label" title="Pipedrive">Pipedrive</div>
+      <div class="bar-track"><div class="bar-fill" style="width:48%;background:#185FA588;"></div></div>
+      <div class="bar-count">15</div>
+    </div><div class="bar-row">
+      <div class="bar-label" title="Odoo">Odoo</div>
+      <div class="bar-track"><div class="bar-fill" style="width:29%;background:#185FA588;"></div></div>
+      <div class="bar-count">9</div>
+    </div><div class="bar-row">
+      <div class="bar-label" title="Salesforce">Salesforce</div>
+      <div class="bar-track"><div class="bar-fill" style="width:23%;background:#185FA588;"></div></div>
+      <div class="bar-count">7</div>
+    </div><div class="bar-row">
+      <div class="bar-label" title="NetSuite">NetSuite</div>
+      <div class="bar-track"><div class="bar-fill" style="width:23%;background:#185FA588;"></div></div>
+      <div class="bar-count">7</div>
+    </div><div class="bar-row">
+      <div class="bar-label" title="MYOB/Acumatica">MYOB/Acumatica</div>
+      <div class="bar-track"><div class="bar-fill" style="width:16%;background:#185FA588;"></div></div>
+      <div class="bar-count">5</div>
+    </div><div class="bar-row">
+      <div class="bar-label" title="MS Dynamics">MS Dynamics</div>
+      <div class="bar-track"><div class="bar-fill" style="width:16%;background:#185FA588;"></div></div>
+      <div class="bar-count">5</div>
+    </div></div>
     </div>
     <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
       <div style="font-size:13px;font-weight:600;color:var(--text);align-self:flex-start;width:100%;margin-bottom:4px;">Progress to 1,000 responses</div>
       <div style="position:relative;width:180px;height:180px;">
-        <canvas id="progressChart"></canvas>
+        <canvas id="progressChart" width="180" height="180" style="display: block; box-sizing: border-box; height: 180px; width: 180px;"></canvas>
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
-          <div style="font-size:28px;font-weight:700;color:var(--blue)" id="prog-pct">9.1%</div>
+          <div style="font-size:28px;font-weight:700;color:var(--blue)" id="prog-pct">10.5%</div>
           <div style="font-size:11px;color:var(--text3)">complete</div>
         </div>
       </div>
       <div style="width:100%">
         <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:6px;">
-          <span>Collected: <strong id="prog-collected" style="color:var(--blue)">91</strong></span>
-          <span>Needed: <strong id="prog-needed" style="color:var(--text3)">909</strong></span>
+          <span>Collected: <strong id="prog-collected" style="color:var(--blue)">105</strong></span>
+          <span>Needed: <strong id="prog-needed" style="color:var(--text3)">895</strong></span>
         </div>
         <div style="height:6px;background:var(--surface2);border-radius:3px;">
-          <div id="prog-bar" style="height:6px;background:var(--blue);border-radius:3px;width:9.1%;transition:width 0.5s;"></div>
+          <div id="prog-bar" style="height: 6px; background: var(--blue); border-radius: 3px; width: 10.5%; transition: width 0.5s;"></div>
         </div>
       </div>
     </div>
@@ -256,23 +340,23 @@
   <div class="three-col" style="margin-bottom:24px;">
     <div class="card">
       <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);font-weight:500;margin-bottom:8px;">CRM</div>
-      <div class="sat-score" id="sat-crm" style="color:var(--blue)">—</div>
+      <div class="sat-score" id="sat-crm" style="color:var(--blue)">3.6</div>
       <div class="sat-sub">avg out of 5</div>
-      <div class="dist-row" id="dist-crm"></div>
+      <div class="dist-row" id="dist-crm"><div class="dist-seg" style="width:19px;background:#E24B4A;" title="1 stars: 9 responses"></div><div class="dist-seg" style="width:15px;background:#EF9F27;" title="2 stars: 7 responses"></div><div class="dist-seg" style="width:46px;background:#888780;" title="3 stars: 22 responses"></div><div class="dist-seg" style="width:96px;background:#378ADD;" title="4 stars: 46 responses"></div><div class="dist-seg" style="width:44px;background:#1D9E75;" title="5 stars: 21 responses"></div></div>
       <div class="dist-legend"><span>1 ★</span><span>2</span><span>3</span><span>4</span><span>5 ★</span></div>
     </div>
     <div class="card">
       <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);font-weight:500;margin-bottom:8px;">ERP</div>
-      <div class="sat-score" id="sat-erp" style="color:var(--green)">—</div>
+      <div class="sat-score" id="sat-erp" style="color:var(--green)">3.4</div>
       <div class="sat-sub">avg out of 5</div>
-      <div class="dist-row" id="dist-erp"></div>
+      <div class="dist-row" id="dist-erp"><div class="dist-seg" style="width:20px;background:#E24B4A;" title="1 stars: 9 responses"></div><div class="dist-seg" style="width:31px;background:#EF9F27;" title="2 stars: 14 responses"></div><div class="dist-seg" style="width:53px;background:#888780;" title="3 stars: 24 responses"></div><div class="dist-seg" style="width:71px;background:#378ADD;" title="4 stars: 32 responses"></div><div class="dist-seg" style="width:44px;background:#1D9E75;" title="5 stars: 20 responses"></div></div>
       <div class="dist-legend"><span>1 ★</span><span>2</span><span>3</span><span>4</span><span>5 ★</span></div>
     </div>
     <div class="card">
       <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);font-weight:500;margin-bottom:8px;">Phone</div>
-      <div class="sat-score" id="sat-phone" style="color:var(--coral)">—</div>
+      <div class="sat-score" id="sat-phone" style="color:var(--coral)">3.6</div>
       <div class="sat-sub">avg out of 5</div>
-      <div class="dist-row" id="dist-phone"></div>
+      <div class="dist-row" id="dist-phone"><div class="dist-seg" style="width:9px;background:#E24B4A;" title="1 stars: 4 responses"></div><div class="dist-seg" style="width:30px;background:#EF9F27;" title="2 stars: 14 responses"></div><div class="dist-seg" style="width:43px;background:#888780;" title="3 stars: 20 responses"></div><div class="dist-seg" style="width:86px;background:#378ADD;" title="4 stars: 40 responses"></div><div class="dist-seg" style="width:52px;background:#1D9E75;" title="5 stars: 24 responses"></div></div>
       <div class="dist-legend"><span>1 ★</span><span>2</span><span>3</span><span>4</span><span>5 ★</span></div>
     </div>
   </div>
@@ -281,18 +365,18 @@
   <div class="section-header"><span class="section-title">Satisfaction by CRM platform</span><div class="section-line"></div></div>
   <div class="card" style="margin-bottom:24px;">
     <div class="chart-wrap" style="position:relative;height:260px;">
-      <canvas id="crmSatChart"></canvas>
+      <canvas id="crmSatChart" width="1110" height="260" style="display: block; box-sizing: border-box; height: 260px; width: 1110px;"></canvas>
     </div>
   </div>
 
   <!-- Key themes -->
   <div class="section-header"><span class="section-title">Key themes from open responses</span><div class="section-line"></div></div>
   <div class="theme-grid">
-    <div class="theme-pill"><div class="theme-icon" style="background:var(--blue-light)">🔗</div><div class="theme-info"><div class="theme-name">Integration & connectivity</div><div class="theme-pct">~58% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:58%;background:var(--blue)"></div></div></div></div>
-    <div class="theme-pill"><div class="theme-icon" style="background:var(--green-light)">🤖</div><div class="theme-info"><div class="theme-name">AI & automation</div><div class="theme-pct">~52% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:52%;background:var(--green)"></div></div></div></div>
+    <div class="theme-pill"><div class="theme-icon" style="background:var(--blue-light)">🔗</div><div class="theme-info"><div class="theme-name">Integration &amp; connectivity</div><div class="theme-pct">~58% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:58%;background:var(--blue)"></div></div></div></div>
+    <div class="theme-pill"><div class="theme-icon" style="background:var(--green-light)">🤖</div><div class="theme-info"><div class="theme-name">AI &amp; automation</div><div class="theme-pct">~52% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:52%;background:var(--green)"></div></div></div></div>
     <div class="theme-pill"><div class="theme-icon" style="background:var(--amber-light)">📦</div><div class="theme-info"><div class="theme-name">ERP upgrade / replacement</div><div class="theme-pct">~28% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:28%;background:var(--amber)"></div></div></div></div>
     <div class="theme-pill"><div class="theme-icon" style="background:var(--coral-light)">📋</div><div class="theme-info"><div class="theme-name">CRM improvement</div><div class="theme-pct">~24% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:24%;background:var(--coral)"></div></div></div></div>
-    <div class="theme-pill"><div class="theme-icon" style="background:var(--purple-light)">📊</div><div class="theme-info"><div class="theme-name">Data quality & reporting</div><div class="theme-pct">~22% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:22%;background:var(--purple)"></div></div></div></div>
+    <div class="theme-pill"><div class="theme-icon" style="background:var(--purple-light)">📊</div><div class="theme-info"><div class="theme-name">Data quality &amp; reporting</div><div class="theme-pct">~22% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:22%;background:var(--purple)"></div></div></div></div>
     <div class="theme-pill"><div class="theme-icon" style="background:var(--blue-light)">☁️</div><div class="theme-info"><div class="theme-name">Cloud migration</div><div class="theme-pct">~16% of responses</div><div class="theme-bar-bg"><div class="theme-bar-fill" style="width:16%;background:var(--blue)"></div></div></div></div>
   </div>
 
@@ -300,15 +384,1009 @@
   <div class="section-header"><span class="section-title">Verbatim responses</span><div class="section-line"></div></div>
   <div class="card" style="margin-bottom:24px;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
-      <div class="verbatim-filters" id="verbatim-filters" style="margin-bottom:0;"></div>
-      <div style="font-size:12px;color:var(--text3)" id="quote-count-label">Showing all quotes</div>
+      <div class="verbatim-filters" id="verbatim-filters" style="margin-bottom:0;"><button class="v-tag active" onclick="setVerbatimFilter('all')">All</button><button class="v-tag " onclick="setVerbatimFilter('integration')">Integration</button><button class="v-tag " onclick="setVerbatimFilter('ai')">AI &amp; automation</button><button class="v-tag " onclick="setVerbatimFilter('erp')">ERP issues</button><button class="v-tag " onclick="setVerbatimFilter('cost')">Cost</button><button class="v-tag " onclick="setVerbatimFilter('frustration')">Frustrations only</button><button class="v-tag " onclick="setVerbatimFilter('opportunity')">Opportunities only</button></div>
+      <div style="font-size:12px;color:var(--text3)" id="quote-count-label">Showing 142 quotes</div>
     </div>
-    <div class="quote-grid" id="quote-grid"></div>
+    <div class="quote-grid" id="quote-grid"><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"I have one, does this work? Or does this work?"</div>
+      <div class="quote-meta">
+        <span class="quote-company">UBT</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Integration with machines all platforms and AI"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Riverlea Group</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"The ERP has taken a long time to stabilise and get all the data we need"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Astrolift</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"AI for repeat processes"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Astrolift</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Lack of suitable integration between Website orders to Unleashed to automate orders from the website into Sales orders in Unleashed, currently doing it manually"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Redback Global</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Using AI agents to automate manual tasks"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Redback Global</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"HubSpot is only new to us so we would like help to get up to speed with it ASAP"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Kenware Home Living</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Automating sales and marketing hackwork to allow us to focus on selling"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Kenware Home Living</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Still have too much fragmented data in other systems such as Excel and Smartsheet."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Northstar Systembuilt</span>
+        <span class="quote-region">🇺🇸 United States</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Need to improve our CRM usage and functionality."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Northstar Systembuilt</span>
+        <span class="quote-region">🇺🇸 United States</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"ERP Runs VERY Slow. CRM is VERY Poor"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Ascento Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"ERP is VERY Slow. CRM is very useless - No Pipeline"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Ascento Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Better CRM that integrates with the Accumatica/MYOB Advanced."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Ascento Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Occasional odd thing busts and takes a while to fix"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Ascento Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"to get website set up so customers can order through it"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Ascento Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"not knowing who to go to to get the best out of them - we want to know what is best practice"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Mortlock Timber</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"integrating AI into our systems"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Mortlock Timber</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Getting Enapps and Pipedrive syncing data."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Wealden Rehab</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"ERP system needs much improvement in areas such as delivery route optimisation and visibility of true hire revenue"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Crescent Industrial</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"System integrations, getting to one true source of data so that AI is easier to implement"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Crescent Industrial</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Quite a few systems which we have integrated, but they are separate — the integrations can be challenging to set up and manage."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Nuvik UK</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"End of line automation, automation with AI in basic daily processes."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Nuvik UK</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"They don't sync well. They are not all very user-friendly"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Signet</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"More agile cloud-based systems which sync well and have a high UX rating"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Signet</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Expensive to pay software designers to make changes to it."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Stromberg Bad</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Integrating AI into our business processes to automate rote work."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Stromberg Bad</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Sage 100 not cloud accessible &amp; Salesforce not fully integrated."</div>
+      <div class="quote-meta">
+        <span class="quote-company">AM Industrial</span>
+        <span class="quote-region">🇺🇸 United States</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Lack of integration between platforms"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Formex Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Implementing AI to reduce human error and time"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Formex Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"integration for efficiency"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Advance Flooring</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"ongoing cost of minor improvements, and constant fixes for issues that randomly start happening"</div>
+      <div class="quote-meta">
+        <span class="quote-company">FoodFlo International</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"streamlining processes"</div>
+      <div class="quote-meta">
+        <span class="quote-company">FoodFlo International</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Integration with online ordering portal"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Intrim Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Bringing IT team in house for support"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Intrim Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Customer facing software that integrates with our ERP"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Glasslines NZ</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"integration and costs"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Sabre</span>
+        <span class="quote-region">🇺🇸 United States</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Double entering and not integrated"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Straitline Canvas</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Integration and removing Double entering of CRM, E-commerce website, and manufacturing jobsheet"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Straitline Canvas</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Accurate and fast costs and project tracking"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Pooles Joinery</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"We are implementing an industry specific system"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Pooles Joinery</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Changing it too often, or over complicating it"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Aztech Buildings</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Exo isn't cloud and scaleable"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Dynamics G-Ex</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"ERP system that scales with our global ops and is cloud based"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Dynamics G-Ex</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Hard to get some reports but getting better"</div>
+      <div class="quote-meta">
+        <span class="quote-company">SwiftDry</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Netsuite over charges for their ERP and make it hard to improve the system — not innovative in growth. Not negotiable in pricing at all."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Transquip</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Reduce our reliance on NetSuite by using software specifically developed for CRM"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Transquip</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Accredo not in the cloud"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Primehort</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Integration and reporting"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Proag Products</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"ERP. Currently reviewing options"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Proag Products</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Old SQL server based systems, needing to find alternatives to bring business into 21st century. Lack of support and investment by system provider"</div>
+      <div class="quote-meta">
+        <span class="quote-company">HireWays</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"AI and process automation to save on administration costs"</div>
+      <div class="quote-meta">
+        <span class="quote-company">HireWays</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"We don't yet have a proper ERP that seamlessly ties our manufacturing and accounting software together — quite a lot of manual input"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Easy Access Co</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Implement new ERP system"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Easy Access Co</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Integration between invoicing system and CRM"</div>
+      <div class="quote-meta">
+        <span class="quote-company">EQM Industrial</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Go to Infusion online and link to our shop cart website"</div>
+      <div class="quote-meta">
+        <span class="quote-company">EQM Industrial</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"It can be unforgiving rather than intuitive"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Logiq Group</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Moving to the online cloud version of Harmoniq"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Logiq Group</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"ERP — Slow, clunky, Old, reviewing Odoo now."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Delfast</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"AI and Odoo for us integrating with all other parts of Biz."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Delfast</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Not enough time to develop them further"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Dorset Australia</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"AI integration into these platforms"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Dorset Australia</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Have too many subscriptions"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Hydralada</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"E-commerce stack — getting sound, professional advice on what web platforms and connectors to use that connect with Netsuite"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Partswise</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"E-commerce including AI integration"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Partswise</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Cost: HubSpot is extremely costly for how little they are hands on. HarmoniQ service is a little shocking. Getting stuff implemented is a challenge."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Icare Medical Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Integration between systems for better business intelligence"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Icare Medical Group</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"No smooth interaction between systems"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Camco Industries</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Data cleanliness and integrated systems."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Camco Industries</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Slow speed, not fit for purpose"</div>
+      <div class="quote-meta">
+        <span class="quote-company">UBT</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Not knowing how far we can take them or what good really looks like."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Southern Fresh Foods</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Automation of reporting and data entry"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Southern Fresh Foods</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Not synced to our website"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Riequip</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Upgrading our accounting system CRM and ERP"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Riequip</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Netsuite is too slow, we get away with it because we are a low transaction business. Still is frustrating to use."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Boundaryline</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Introduce a dedicated CRM system that connects in with NetSuite — likely HubSpot"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Boundaryline</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"We love Odoo, but their app for phone use is not up to speed"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Walmay Architectural</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Reporting is difficult and information in different areas leads to different sources of truth"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Waimea Group</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Automations and AI bots supporting main business functions"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Waimea Group</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Implementation — there are so many features that would help us but configuration and rolling them out to the team takes time"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Trade Workwear &amp; Safety</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Systemise more business processes"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Trade Workwear &amp; Safety</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Integration and cross platform intelligence"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Mario Moose</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Cross platform intelligence"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Mario Moose</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Integration across systems"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Infinity Electrical</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Fragmented data across systems"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Altro Group</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Single source of truth with AI analytics"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Altro Group</span>
+        <span class="quote-region">🇬🇧 United Kingdom</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Transitioning to a proper ERP"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Belle Comfort Solutions</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"We are new to NetSuite so still learning"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Oritech</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Quoting, product data"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Desktop Promotional</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Master data cleanliness limiting sync of systems and funny use of functionality, lack of advanced intercompany transaction automation"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Attach2</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Using the functionality we don't currently for automation; integration of systems for automation"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Attach2</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Integration with AI to streamline purchasing"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Trendz</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Lack of connectivity between systems"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Corporate Sign Industries</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"AI enablement across all platforms and integration between all systems"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Corporate Sign Industries</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Resources planning across multiple projects"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Camex Group</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Resource planning &amp; AI integration across platforms"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Camex Group</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Not user friendly enough"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Flow Industries</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Internal AI in each system talking to each other"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Flow Industries</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Implementing more of them :)"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Fractional Direct</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Data Discipline. Regardless of system, people who keep clean data will be ahead."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Fractional Direct</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Server based, not easy to access remotely"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Stratalign</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Automated reporting of data, making key metrics visible for the team"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Stratalign</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Too complex, and not enough support from vendor."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Elite Medical Supplies</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"One consolidated system, rather than a tech stack"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Elite Medical Supplies</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Need to replace everything... but haven't got the time or desire to change anything"</div>
+      <div class="quote-meta">
+        <span class="quote-company">PLUMBOSS Australasia</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Not having someone who can tell us what is best practise — everyone just builds what we ask"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Mortlock</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Using AI to help improve efficiency"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Mortlock</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Acumatica is too slow"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Active Mobility Systems</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Equipment hire program and better service management system"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Active Mobility Systems</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Trying to sync HubSpot and NetSuite"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Turner Hastings</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Terrible implementation"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Ablefix</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"To have a functional system"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Ablefix</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Clunky, tried to set up HubSpot but haven't got far — would like a system that handled everything from initial contact to handover"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Peters Glen Shadehouses</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Australian Payroll connection as part of the accounting system"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Vitruvium</span>
+        <span class="quote-region">🇦🇺 Australia</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Cost of systems and staff to upkeep them."</div>
+      <div class="quote-meta">
+        <span class="quote-company">Amerisan LLC</span>
+        <span class="quote-region">🇺🇸 United States</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"AI prompted reporting"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Amerisan LLC</span>
+        <span class="quote-region">🇺🇸 United States</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Getting the systems streamlined"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Te Pari Products</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Interconnection and streamlined"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Te Pari Products</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Integration, and financial modules"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Eden</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Replace core financial modules with a new bolt-on system"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Eden</span>
+        <span class="quote-region">🇳🇿 New Zealand</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Isn't great for tracking KPIs, needs development"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Arch Office</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Version open source — pas de mises à jour faciles"</div>
+      <div class="quote-meta">
+        <span class="quote-company">MODULAND</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Upgrade of version on Odoo but that's because we have done too much custom"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Actiwork</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Automatisation so that team can be used on higher value tasks"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Actiwork</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Tried to fit in 1 system to run every facet of business and clearly didn't work (ERP, CRM, EOS)"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Urbencea</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Many interactions must be set up between software systems to ensure comprehensive monitoring — requires significant custom development work"</div>
+      <div class="quote-meta">
+        <span class="quote-company">ADP Group</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Deploying Archdesk for fit-out and furniture activities"</div>
+      <div class="quote-meta">
+        <span class="quote-company">ADP Group</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"PMI and the multitude of tools we had to develop to face its limitations"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Alto Group</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Automation through AI"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Alto Group</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Need someone to work on continual improvements"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Bluebird Medical AB</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Better connection between Business Central, Shopify and Sales"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Bluebird Medical AB</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Our Odoo partner — currently switching"</div>
+      <div class="quote-meta">
+        <span class="quote-company">coneon GmbH</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Transferring all to Odoo"</div>
+      <div class="quote-meta">
+        <span class="quote-company">coneon GmbH</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Would like to stop on-premises servers and use cloud instead"</div>
+      <div class="quote-meta">
+        <span class="quote-company">ACM</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Microsoft Intune for better IT management"</div>
+      <div class="quote-meta">
+        <span class="quote-company">ACM</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Custom developments from the past that complicate the originally intended standard usage"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Faktum Industries</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Migration from Microsoft Dynamics NAV to Microsoft Dynamics 365 Business Central"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Faktum Industries</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Performance and functionality issues with our existing ERP"</div>
+      <div class="quote-meta">
+        <span class="quote-company">PLEYCE</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Migration to a new ERP system within the current year"</div>
+      <div class="quote-meta">
+        <span class="quote-company">PLEYCE</span>
+        <span class="quote-region">🇫🇷 France</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Aircall operative uptime and stability"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Desabau GmbH</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Complete integration of all systems"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Desabau GmbH</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#c0392b">
+      <div class="quote-text">"Too expensive and slow"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Jeikner</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-frustration">Frustration</span>
+      </div>
+    </div><div class="quote-card" style="border-left-color:#1D9E75">
+      <div class="quote-text">"Speed and all-in-one solution"</div>
+      <div class="quote-meta">
+        <span class="quote-company">Jeikner</span>
+        <span class="quote-region">🌍 Other</span>
+        <span class="quote-type type-opportunity">Opportunity</span>
+      </div>
+    </div></div>
   </div>
 
 </div>
 
-<div class="footer">Business Systems Survey Dashboard &mdash; Generated March 2026 &mdash; <span id="footer-resp">91</span> responses collected</div>
+<div class="footer">Business Systems Survey Dashboard — Generated March 2026 — <span id="footer-resp">105</span> responses collected</div>
 
 <script>
 // ============================================================
@@ -795,5 +1873,6 @@ function downloadDashboard() {
 // Init
 renderAll();
 </script>
-</body>
-</html>
+
+
+</body></html>
