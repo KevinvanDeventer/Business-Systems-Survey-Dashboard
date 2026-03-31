@@ -160,11 +160,11 @@
 <div class="header">
   <div class="header-left">
     <h1>Business Systems Survey</h1>
-    <p>Live dashboard — data as of March 2026</p>
+    <p>Live dashboard — data as of April 2026</p>
   </div>
   <div class="header-right">
-    <span class="badge badge-blue" id="resp-badge">136 responses</span>
-    <span class="badge badge-green">13.6% of target</span>
+    <span class="badge badge-blue" id="resp-badge">120 responses</span>
+    <span class="badge badge-green">12.0% of target</span>
     <button class="download-btn" onclick="downloadDashboard()">
       ↓ Download HTML
     </button>
@@ -1383,9 +1383,9 @@
 // RAW DATA — inferred regions from email domains
 // ============================================================
 const RESPONSES = [
+  {company:"Kevin Test",region:"NZ",crm:"Hubspot",crmSat:2,erp:"Netsuite",erpSat:2,phone:"3CX",phoneSat:1,frustration:"gshdtjyfj",opportunity:"shsjhdj"},
   {company:"reinline GmbH & Co. KG",region:"NZ",crm:"Cobra CRM",crmSat:2,erp:"Selectline ERP",erpSat:3,phone:"NFON Cloudya",phoneSat:4,frustration:"complexity of the systems",opportunity:""},
   {company:"Cetro EMdical AB",region:"NZ",crm:"Upsales",crmSat:4,erp:"Monitor G5",erpSat:5,phone:"3Office väcel",phoneSat:3,frustration:"Integration with other portals costs money always",opportunity:"Less systems"},
-  {company:"Bob",region:"NZ",crm:"",crmSat:null,erp:"",erpSat:null,phone:"",phoneSat:null,frustration:"",opportunity:""},
   {company:"Estancia AB",region:"NZ",crm:"Hupspot",crmSat:3,erp:"Pyramid",erpSat:5,phone:"3växel",phoneSat:5,frustration:"Some intergrations",opportunity:""},
   {company:"Jeikner",region:"NZ",crm:"Cobra",crmSat:2,erp:"Microtech",erpSat:4,phone:"Starface",phoneSat:5,frustration:"Too expensive and slow",opportunity:"speed and all in one solution"},
   {company:"BGFIX AB",region:"NZ",crm:"Netsuite",crmSat:4,erp:"Netsuite",erpSat:4,phone:"3Växel",phoneSat:3,frustration:"Its a bit slow",opportunity:""},
@@ -1406,10 +1406,8 @@ const RESPONSES = [
   {company:"Eden",region:"NZ",crm:"Hubspot",crmSat:4,erp:"Seradex Orderstream",erpSat:4,phone:"8x8",phoneSat:4,frustration:"Integration, and financial modules",opportunity:"Replace core financial modules with a new bolt-on system"},
   {company:"Te Pari Products",region:"NZ",crm:"Dynamics CRM",crmSat:3,erp:"Microsoft",erpSat:null,phone:"Cradle",phoneSat:2,frustration:"Gettign the streamlined",opportunity:"Interconnection and streamlined"},
   {company:"Amerisan LLC",region:"NZ",crm:"Hubspot + Numerik",crmSat:4,erp:"Netsuite",erpSat:4,phone:"Zoom",phoneSat:4,frustration:"Cost of systems and staff to upkeep them.",opportunity:"Ai prompted reporting"},
-  {company:"Test",region:"NZ",crm:"",crmSat:null,erp:"",erpSat:null,phone:"",phoneSat:null,frustration:"",opportunity:""},
   {company:"Vitruvium",region:"NZ",crm:"Zoho",crmSat:5,erp:"Zoho",erpSat:5,phone:"N,/A",phoneSat:null,frustration:"Payroll",opportunity:"Australian Payroll connection as part of the accounting system. At the moment, every system has to use third-party software"},
   {company:"Peters Glen Shadehouses",region:"NZ",crm:"Excel, xero",crmSat:3,erp:"N/A",erpSat:1,phone:"Mobile",phoneSat:1,frustration:"Clunky, tried to set up hubspot but haven't got far, really would like a system that handled everything from initial contact to handover and request for more people that are interested in the same industry.",opportunity:"Scalable systems"},
-  {company:"Ablefix",region:"NZ",crm:"",crmSat:1,erp:"",erpSat:1,phone:"",phoneSat:5,frustration:"Terrible implementation",opportunity:"To have a functional system"},
   {company:"Turner Hastings",region:"NZ",crm:"Hubspot",crmSat:4,erp:"NetSuite",erpSat:5,phone:"Microsoft Teams",phoneSat:5,frustration:"Trying to sync HubSpot and NetSuite",opportunity:""},
   {company:"Tebco",region:"NZ",crm:"Odoo",crmSat:4,erp:"Odoo",erpSat:4,phone:"Office hq",phoneSat:2,frustration:"Ai integration",opportunity:"Ai"},
   {company:"Active Mobility Systems",region:"NZ",crm:"MYOB Acumatica and HubSpot",crmSat:3,erp:"MYOB Acumatica",erpSat:3,phone:"3CX",phoneSat:3,frustration:"Acumatica is too slow",opportunity:"Equipment hire program and better service management system"},
@@ -1444,7 +1442,6 @@ const RESPONSES = [
   {company:"Riequip Ltd",region:"NZ",crm:"MYOB Account Right",crmSat:1,erp:"n/a",erpSat:1,phone:"3CX",phoneSat:5,frustration:"Not synced to our website",opportunity:"Upgrading our accounting system CRM and ERP"},
   {company:"Southern Fresh Foods",region:"NZ",crm:"Fresh Sales",crmSat:3,erp:"Microsoft Dynamics Bc",erpSat:4,phone:"2 talk",phoneSat:4,frustration:"Not knowing how far we can take them or what good really looks like.",opportunity:"Automation of reporting and data entry"},
   {company:"Ablefix",region:"NZ",crm:"Business central",crmSat:2,erp:"Business central",erpSat:2,phone:"3xc",phoneSat:4,frustration:"",opportunity:""},
-  {company:"UBT",region:"NZ",crm:"NetSuite",crmSat:1,erp:"NetSuite",erpSat:1,phone:"3cx",phoneSat:3,frustration:"Slow speed, not fit for purpose",opportunity:"A new CRM"},
   {company:"Camco Industries",region:"NZ",crm:"Hubspot",crmSat:3,erp:"Advanced business manager",erpSat:3,phone:"3cx",phoneSat:3,frustration:"No smooth interaction between systems",opportunity:"Data cleanliness and integrated systems."},
   {company:"Icare Medical Group",region:"NZ",crm:"HubSpot",crmSat:3,erp:"HarmoniQ",erpSat:4,phone:"3CX",phoneSat:4,frustration:"Cost: HubSpot is extremely costly for how little they are hands on with your business. HarmoniQ is good in principle but their service is a little shocking. Getting stuff implemented is a challenge. 3CX is good, but not great for spanning 3 countries",opportunity:"Integration between systems for better business intelligence, whether using AI or existing integrations API etc."},
   {company:"Partswise",region:"NZ",crm:"Hubspot",crmSat:3,erp:"Jcurve Netsuite",erpSat:4,phone:"Yealink",phoneSat:4,frustration:"E-commerce stack. Getting sound,  professional  advice on what Web platforms and connector to use that will connect with Netsuite, are fit for purpose and industry and that is a long term solution and will allow for growth.",opportunity:"E-commerce including AI integration"},
@@ -1454,7 +1451,6 @@ const RESPONSES = [
   {company:"Logiq Group Limited",region:"NZ",crm:"HubSpot",crmSat:5,erp:"Harmoniq",erpSat:5,phone:"Teams",phoneSat:5,frustration:"It can be unforgiving rather than intuitive",opportunity:"Moving to the online cloud version of Harmoniq"},
   {company:"EQM Industrial",region:"NZ",crm:"Pipedrive",crmSat:5,erp:"Na",erpSat:5,phone:"3cx",phoneSat:5,frustration:"Intergaration between invoicing system and CRM",opportunity:"Go to Infusion online and link to our shop cart website"},
   {company:"Newfield Group",region:"NZ",crm:"Less annoying crm",crmSat:4,erp:"Infusion",erpSat:3,phone:"Yeastar",phoneSat:5,frustration:"Infusion - our version is not cloud based",opportunity:"Cloud based erp"},
-  {company:"EQM Industrial",region:"NZ",crm:"Pipedrive",crmSat:5,erp:"Na",erpSat:null,phone:"3cx",phoneSat:5,frustration:"",opportunity:""},
   {company:"Easy Access Co",region:"NZ",crm:"Hubspot",crmSat:5,erp:"MYOB Exonet",erpSat:2,phone:"3CX",phoneSat:4,frustration:"We don't yet have a proper ERP that seamlessly ties our manufacturing and accounting software together, so there's quite a lot of manual input or third party apps used as workarounds to connect them.",opportunity:"Implement new ERP system. We have finalized the system we need but are waiting on a business merger to take place before we can proceed."},
   {company:"WaterLine Tanks",region:"NZ",crm:"Pipedrive",crmSat:3,erp:"SAP B1",erpSat:4,phone:"Grandstream On Premise",phoneSat:null,frustration:"not enough interoperability. SAP works very well for us, it is very customisable but then that means i get a long list of updates to make! as it 'looks' old and clunky i struggle to get people to rite notes etc, but it does the work of a person for us so we are happy.  Pipedrive is good and simple but doesn't quite fit our differing path to markets - always a bit of confusion and sales metrics dont quite stack up",opportunity:"interoperability - been holding conversations with phocas re data and hubspot re sales/crm"},
   {company:"Dyno Ltd",region:"NZ",crm:"Hubspot",crmSat:4,erp:"None - kinda use infusion/ smartsheet",erpSat:1,phone:"3xc",phoneSat:3,frustration:"",opportunity:""},
@@ -1500,25 +1496,13 @@ const RESPONSES = [
   {company:"Airocle",region:"NZ",crm:"HubSpot",crmSat:5,erp:"Nexvia",erpSat:2,phone:"3CX",phoneSat:4,frustration:"ERP inflexibility",opportunity:"Moving to a new ERP"},
   {company:"Ascento Group Australia",region:"NZ",crm:"MYOB Acumatica",crmSat:3,erp:"MYOB Acumatica",erpSat:4,phone:"3CX",phoneSat:5,frustration:"Occasional odd thing busts and takes a while to fix",opportunity:"to get website set up so customers can order through it"},
   {company:"Ascento Group Australia",region:"NZ",crm:"Accumatica/MYOB Advanced",crmSat:1,erp:"Accumatica/MYOB Advanced",erpSat:2,phone:"3CX",phoneSat:2,frustration:"ERP is VERY Slow. CRM is very useless - No Pipeline",opportunity:"Better CRM that integrates with the Accumatica/MYOB Advanced. This would probably help the ERP Speed Up and more important, a good CRM will help us secure more sales"},
-  {company:"Ascento Group Australia",region:"NZ",crm:"Accumatica/MYOB Advanced",crmSat:1,erp:"Accumatica/MYOB Advanced",erpSat:3,phone:"3CX",phoneSat:3,frustration:"ERP Runs VERY Slow CRM is VERY Poor",opportunity:""},
   {company:"IntraSpace Pty Ltd",region:"NZ",crm:"Netsuite with Hubspot",crmSat:3,erp:"Netsuite",erpSat:3,phone:"Yealink",phoneSat:4,frustration:"Netsuite not having good pipeline management so we had to bolt on Hubspot",opportunity:"AI to help with some tasks"},
   {company:"Northstar Systembuilt LLC",region:"NZ",crm:"NetSuite",crmSat:1,erp:"NetSuite",erpSat:5,phone:"RingCentral partly integrated with Teams",phoneSat:4,frustration:"Still have too much fragmented data in other systems such as Excel and Smartsheet.",opportunity:"Need to improve our CRM usage and functionality."},
   {company:"WaterLine Tanks",region:"NZ",crm:"pipedrive",crmSat:4,erp:"SAP B1",erpSat:5,phone:"Grandstream on premise",phoneSat:4,frustration:"We would love a way to tie these 3 systems together for quality data and save triple entries. We have tried cloud phone solutions, but can't get the quality high enough to feel like its worth the switch. We love SAP B1 - well worth it in our business but we need more time investment by us - getting quality partners is a struggle but think we are onto a good one now. If we could get a more customisable CRM but with the simplicity of Pipedrive would be amazing.",opportunity:"more time spent customising systems and tying them together somehow!"},
   {company:"Kenware Home Living",region:"NZ",crm:"Hubspot",crmSat:3,erp:"MYOB Acumatica",erpSat:5,phone:"MS Teams",phoneSat:4,frustration:"Hubspot in only new to us so we would like help to get up to speed with it ASAP",opportunity:"Automating sales and marketing hackwork to allow us to focus on selling"},
   {company:"Redback Global Ltd",region:"NZ",crm:"Hubspot",crmSat:5,erp:"Unleashed",erpSat:4,phone:"Cradle",phoneSat:5,frustration:"Lack of suitable integration between Website orders to Unleashed to automate orders from the website into Sales orders in Unleashed, currently doing it manually",opportunity:"Using AI agents to automate manual tasks"},
   {company:"Astrolift",region:"NZ",crm:"Salesforce",crmSat:4,erp:"Certinia",erpSat:3,phone:"3CX",phoneSat:4,frustration:"The ERP has taken a long time to stabilise and get all the data we need",opportunity:"AI for repeat processes"},
-  {company:"Riverlea Group",region:"NZ",crm:"Hubspot",crmSat:4,erp:"Netsuite",erpSat:4,phone:"3cx",phoneSat:3,frustration:"",opportunity:"Integration  with machines  all platforms and AI"},
-  {company:"Sjwj",region:"NZ",crm:"",crmSat:null,erp:"",erpSat:null,phone:"",phoneSat:null,frustration:"",opportunity:""},
-  {company:"One more",region:"NZ",crm:"Netsuite",crmSat:1,erp:"Netsuite",erpSat:1,phone:"Who knows",phoneSat:4,frustration:"They cost too much money and don't work well",opportunity:"A better CRM and ERP"},
-  {company:"Test co",region:"NZ",crm:"Marketo",crmSat:4,erp:"Oracle",erpSat:5,phone:"PBX",phoneSat:2,frustration:"They just don't work properly  It makes me sad",opportunity:"Using UBT's Central Technology Management, I hear it's the best"},
-  {company:"UBT",region:"NZ",crm:"Hubspot",crmSat:3,erp:"Salesforce",erpSat:3,phone:"Cisco",phoneSat:2,frustration:"I have one, does this work  Or does this work?",opportunity:"Another text in here"},
-  {company:"UBT",region:"NZ",crm:"Hubspot",crmSat:4,erp:"Salesforce",erpSat:4,phone:"Cisco",phoneSat:2,frustration:"A lot of frustrations that I have.  Does this work",opportunity:"More frustrations"},
-  {company:"UBT",region:"NZ",crm:"Hubspot",crmSat:4,erp:"Salesforce",erpSat:3,phone:"Cisco",phoneSat:5,frustration:"It doesn't work very well and that makes me sad.  Does this work though?",opportunity:"Over there doing that thing"},
-  {company:"UBT",region:"NZ",crm:"Hubspot",crmSat:4,erp:"Salesforce",erpSat:3,phone:"Cisco",phoneSat:2,frustration:"Bad questions",opportunity:"Getting things to work even when I'm writing really long answers  What do you think about that"},
-  {company:"UBT",region:"NZ",crm:"Netsuite",crmSat:4,erp:"Netsuite",erpSat:4,phone:"Netsuite",phoneSat:3,frustration:"",opportunity:""},
-  {company:"Claires business",region:"NZ",crm:"Hubspot",crmSat:5,erp:"Hubspot",erpSat:5,phone:"",phoneSat:null,frustration:"",opportunity:""},
-  {company:"UBT",region:"NZ",crm:"Hubspot",crmSat:4,erp:"Salesforce",erpSat:2,phone:"Super warehouse system",phoneSat:5,frustration:"It not work good  I don't like it",opportunity:"Lots of many opportunities"},
-  {company:"UBT",region:"NZ",crm:"Hubspot",crmSat:4,erp:"Salesforce",erpSat:4,phone:"Super warehouse system",phoneSat:5,frustration:"It's not very good and I don't like it.  I want a better one.",opportunity:"Getting better things that do more better."}
+  {company:"Riverlea Group",region:"NZ",crm:"Hubspot",crmSat:4,erp:"Netsuite",erpSat:4,phone:"3cx",phoneSat:3,frustration:"",opportunity:"Integration  with machines  all platforms and AI"}
 ];
 
 // ============================================================
