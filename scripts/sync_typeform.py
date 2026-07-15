@@ -10,6 +10,7 @@ Required environment variables:
 Usage:
   python scripts/sync_typeform.py            # normal run, rewrites index.html
   python scripts/sync_typeform.py --inspect  # just print field titles/ids, no write
+  python scripts/sync_typeform.py --raw      # print raw fields + first response, no write
 """
 
 import os
@@ -20,30 +21,42 @@ import datetime
 import urllib.request
 import urllib.error
 
-SCRIPT_VERSION = "v2-raw-diagnostic"
+SCRIPT_VERSION = "v3-group-fix"
 
 FORM_ID = os.environ.get("TYPEFORM_FORM_ID", "hxM2ihJz")
 TOKEN = os.environ.get("TYPEFORM_TOKEN")
 INDEX_HTML_PATH = os.path.join(os.path.dirname(__file__), "..", "index.html")
-
 API_BASE = "https://api.typeform.com"
 
 # ---------------------------------------------------------------------------
-# Keyword matching: since the original field-ID mapping was lost, fields are
-# matched by keywords found in their Typeform question title. If auto-match
-# picks the wrong field, add/adjust keywords here rather than hunting for IDs.
+# Keyword matching against FLATTENED fields (Typeform nests real questions
+# inside "group" fields via properties.fields — the old version only looked
+# at the top-level fields list, which is why every mapping came back None).
 # ---------------------------------------------------------------------------
-FIELD_KEYWORDS = {
-    "company":     ["company", "organisation", "organization", "business name"],
-    "email":       ["email"],
-    "crm":         ["crm"],
-    "crm_sat":     ["crm", "satisf"],
-    "erp":         ["erp"],
-    "erp_sat":     ["erp", "satisf"],
-    "phone":       ["phone", "voip", "telephony"],
-    "phone_sat":   ["phone", "satisf"],
-    "frustration": ["frustrat", "biggest challenge", "pain point"],
-    "opportunity": ["opportunit", "improve", "biggest win"],
+CRM_WORDS = ["crm"]
+ERP_WORDS = ["erp"]
+PHONE_WORDS = ["phone", "voip", "telephony"]
+SAT_WORDS = ["satisf"]
+COMPANY_WORDS = ["company", "organisation", "organization", "business name"]
+FRUSTRATION_WORDS = ["frustrat", "biggest challenge", "pain point"]
+OPPORTUNITY_WORDS = ["opportunit", "improve", "biggest win"]
+
+
+def _any_word_in(title, words):
+    return any(w in title for w in words)
+
+
+FIELD_RULES = {
+    "company":     lambda t: _any_word_in(t, COMPANY_WORDS),
+    "email":       lambda t: "email" in t,
+    "crm":         lambda t: _any_word_in(t, CRM_WORDS) and not _any_word_in(t, SAT_WORDS),
+    "crm_sat":     lambda t: _any_word_in(t, CRM_WORDS) and _any_word_in(t, SAT_WORDS),
+    "erp":         lambda t: _any_word_in(t, ERP_WORDS) and not _any_word_in(t, SAT_WORDS),
+    "erp_sat":     lambda t: _any_word_in(t, ERP_WORDS) and _any_word_in(t, SAT_WORDS),
+    "phone":       lambda t: _any_word_in(t, PHONE_WORDS) and not _any_word_in(t, SAT_WORDS),
+    "phone_sat":   lambda t: _any_word_in(t, PHONE_WORDS) and _any_word_in(t, SAT_WORDS),
+    "frustration": lambda t: _any_word_in(t, FRUSTRATION_WORDS),
+    "opportunity": lambda t: _any_word_in(t, OPPORTUNITY_WORDS),
 }
 
 # Domain suffix -> region bucket, matching the four+catch-all regions
@@ -79,14 +92,27 @@ def get_form_fields():
     return form.get("fields", [])
 
 
+def flatten_fields(fields):
+    """Recursively expand group/matrix fields so nested questions are visible."""
+    flat = []
+    for f in fields:
+        nested = f.get("properties", {}).get("fields")
+        if nested:
+            flat.extend(flatten_fields(nested))
+        else:
+            flat.append(f)
+    return flat
+
+
 def classify_fields(fields):
     """Map each logical key (company, crm, crm_sat, ...) to a Typeform field id."""
+    flat = flatten_fields(fields)
     mapping = {}
-    for key, keywords in FIELD_KEYWORDS.items():
+    for key, rule in FIELD_RULES.items():
         best = None
-        for f in fields:
+        for f in flat:
             title = f.get("title", "").lower()
-            if all(kw in title for kw in keywords):
+            if rule(title):
                 best = f["id"]
                 break
         mapping[key] = best
@@ -200,12 +226,10 @@ def records_to_js(records):
 def rewrite_index_html(new_array_js):
     with open(INDEX_HTML_PATH, "r", encoding="utf-8") as f:
         html = f.read()
-
     pattern = re.compile(r"const RESPONSES = \[.*?\n\];", re.DOTALL)
     if not pattern.search(html):
-        sys.exit("Could not find `const RESPONSES = [ ... ];` block in index.html. Aborting.")
+        sys.exit("Could not find const RESPONSES = [ ... ]; block in index.html. Aborting.")
     html = pattern.sub(new_array_js, html, count=1)
-
     month_year = datetime.datetime.utcnow().strftime("%B %Y")
     html = re.sub(
         r"Generated \w+ \d{4}",
@@ -213,7 +237,6 @@ def rewrite_index_html(new_array_js):
         html,
         count=1,
     )
-
     with open(INDEX_HTML_PATH, "w", encoding="utf-8") as f:
         f.write(html)
 
@@ -249,7 +272,7 @@ def main():
 
     if inspect_only:
         print("Form fields (id, title):")
-        for f in fields:
+        for f in flatten_fields(fields):
             print(f"  {f['id']:>20}  {f.get('title','')!r}")
         print("\nAuto-detected mapping:")
         for key, fid in field_map.items():
@@ -259,11 +282,10 @@ def main():
     unmapped = [k for k, v in field_map.items() if v is None]
     if unmapped:
         print(f"WARNING: could not auto-match fields for: {unmapped}", file=sys.stderr)
-        print("Run with --inspect to see all field titles and adjust FIELD_KEYWORDS.", file=sys.stderr)
+        print("Run with --inspect to see all field titles and adjust FIELD_RULES.", file=sys.stderr)
 
     responses = get_all_responses()
     print(f"Fetched {len(responses)} responses from Typeform form {FORM_ID}")
-
     records = build_records(responses, field_map)
     js = records_to_js(records)
     rewrite_index_html(js)
