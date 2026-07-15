@@ -1,0 +1,39 @@
+name: Sync Typeform responses
+
+on:
+  schedule:
+    # 7:00am NZT (NZST, UTC+12) = 19:00 UTC the previous day.
+    # NZ shifts to NZDT (UTC+13) part of the year; this stays on standard time,
+    # so expect the run to land around 6-8am local depending on daylight saving.
+    - cron: "0 19 * * *"
+  workflow_dispatch: {} # allows manual "Run workflow" trigger from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run sync
+        env:
+          TYPEFORM_TOKEN: ${{ secrets.TYPEFORM_TOKEN }}
+          TYPEFORM_FORM_ID: "hxM2ihJz"
+        run: python scripts/sync_typeform.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "typeform-sync-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Auto-sync Typeform responses ($(date -u +%Y-%m-%d))"
+          git push
