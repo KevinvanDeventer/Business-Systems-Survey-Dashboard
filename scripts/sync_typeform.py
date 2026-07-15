@@ -20,6 +20,8 @@ import datetime
 import urllib.request
 import urllib.error
 
+SCRIPT_VERSION = "v2-raw-diagnostic"
+
 FORM_ID = os.environ.get("TYPEFORM_FORM_ID", "hxM2ihJz")
 TOKEN = os.environ.get("TYPEFORM_TOKEN")
 INDEX_HTML_PATH = os.path.join(os.path.dirname(__file__), "..", "index.html")
@@ -216,11 +218,34 @@ def rewrite_index_html(new_array_js):
         f.write(html)
 
 
+def print_fields_recursive(fields, indent=0):
+    for f in fields:
+        pad = "  " * indent
+        print(f"{pad}{f.get('type'):>10}  {f['id']:>20}  {f.get('title','')!r}")
+        nested = f.get("properties", {}).get("fields")
+        if nested:
+            print_fields_recursive(nested, indent + 1)
+
+
 def main():
+    print(f"sync_typeform.py {SCRIPT_VERSION}")
     inspect_only = "--inspect" in sys.argv
+    raw_mode = "--raw" in sys.argv
 
     fields = get_form_fields()
     field_map = classify_fields(fields)
+
+    if raw_mode:
+        print("=== FORM FIELDS (recursive, shows nested group/matrix fields) ===")
+        print_fields_recursive(fields)
+        print("\n=== RAW ANSWERS FROM FIRST RESPONSE ===")
+        page = api_get(f"/forms/{FORM_ID}/responses", {"page_size": 1})
+        items = page.get("items", [])
+        if items:
+            print(json.dumps(items[0].get("answers", []), indent=2))
+        else:
+            print("No responses returned.")
+        return
 
     if inspect_only:
         print("Form fields (id, title):")
