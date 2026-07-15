@@ -27,7 +27,7 @@ jobs:
         env:
           TYPEFORM_TOKEN: ${{ secrets.TYPEFORM_TOKEN }}
           TYPEFORM_FORM_ID: "hxM2ihJz"
-        run: python scripts/sync_typeform.py
+        run: python scripts/sync_typeform.py --raw
 
       - name: Commit and push if changed
         run: |
